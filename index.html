@@ -7,16 +7,78 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Martin Rodriguez</title>
 </head>
-<body>
+<body id="cuerpo">
+    <!--Encabezado de pagina-->
     <header class="cabeza">
         <ul id="links">
-            <li class="links"><a href="#" class="transportador">Inicio</a></li>
-            <li class="links"><a href="#" class="transportador">Proyectos</a></li>
-            <li class="links"><a href="#" class="transportador">Habilidades</a></li>
-            <li class="links"><a href="#" class="transportador">Contacto</a></li>
+            <li class="links"><a href="#inicio" class="transportador rojo">Inicio</a></li><!--Te envia al inicio-->
+            <li class="links"><a href="#" class="transportador naranjo">Proyectos</a></li><!--Te envia al Proyectos-->
+            <li class="links"><a href="#" class="transportador amarillo">Habilidades</a></li><!--Te envia al Habilidades-->
+            <li class="links"><a href="#" class="transportador azul">Contacto</a></li><!--Te envia al Contacto-->
         </ul>
+        <div class="linea_rgb"></div>
     </header>
+    <!--Inicio con informacion sobre mi-->
+    <section id="inicio"></section>
+
+    <section class="inicio">
+        <div class="container-me">
+            
+            <img src="resources/img/IMG-20250822-WA0010.jpg" class="foto">
+            <!-- Órbitas -->
+            <div class="orbit" id="orbit-earth" style="width: 250px; height: 250px;">
+                
+                <div class="planet earth" id="earth"></div>
+                <div class="planet mars" id="mars"></div>
+                <div class="planet jupiter" id="jupiter"></div>
+            </div>
+            <div class="orbit" id="orbit-mars" style="width: 300px; height: 300px;"></div>
+            <div class="orbit" id="orbit-jupiter" style="width: 350px; height: 350px;"></div>
+
+    <!-- Planetas -->
+        </div>
+        <div class="container-text">
+            <h1>Hola, soy Martin Rodriguez</h1>
+            <h3>Desarrollador Web novato estudie en el liceo comercial Vate Vicente Huidobro durante 3 años, donde aprendi todo lo básico en programacion, mi fuerte es el apartado de front-end y estoy practicando mi apartado de back-end para convertirme en un fullstack</h3>
+    </section>
+    <!--Proyectos-->
+    <section id="proyectos">
+        <div class="youtube">
+            <img src="resources/img/descargar.jpg" class="logo">
+        </div>
+        <div class="google-play">
+            <img src="resources/img/16690303484790.jpg" class="logo">
+        </div>
+    </section>
+    <!--Habilidades-->
 </body>
 <script src="static/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+function orbitPlanet(planetId, radius, duration) {
+    anime({
+        targets: `#${planetId}`,
+        translateX: {
+        value: function (_, i) {
+            return radius;
+        }
+        },
+        rotate: '1turn',
+        duration: duration,
+        easing: 'linear',
+        loop: true,
+        direction: 'normal',
+        update: function(anim) {
+            let angle = anim.progress / 100 * 2 * Math.PI;
+            let planet = document.getElementById(planetId);
+            planet.style.transform = `translate(${radius * Math.cos(angle)}px, ${radius * Math.sin(angle)}px)`;
+        }
+        });
+    }
+
+    orbitPlanet('earth', 130, 8000);
+    orbitPlanet('mars', 150, 12000);
+    orbitPlanet('jupiter', 170, 20000);
+</script>
 </html>
