@@ -3,95 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Sistema Solar con Anime.js</title>
-  <style>
-    body {
-      margin: 0;
-      background: radial-gradient(circle at center, #000 0%, #111 100%);
-      overflow: hidden;
-      font-family: sans-serif;
-    }
-
-    .universe {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .sun {
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, #ffcc00, #ff9900);
-      border-radius: 50%;
-      box-shadow: 0 0 50px #ffaa00;
-      z-index: 2;
-    }
-
-    .orbit {
-        position: absolute;
-        border: 1px dashed rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        pointer-events: none;
-    }
-
-    .planet {
-    width: 20px;
-    height: 20px;
-    background-color: #33f;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-
-    .planet.mars { background-color: #e44; }
-    .planet.earth { background-color: #3af; }
-    .planet.jupiter { background-color: #f96; width: 30px; height: 30px; }
-  </style>
-</head>
 <body>
-  <div class="universe">
-    <div class="sun"></div>
-
-    <!-- Órbitas -->
-    <div class="orbit" id="orbit-earth" style="width: 200px; height: 200px;"><div class="planet earth" id="earth"></div>
-    <div class="planet mars" id="mars"></div>
-    <div class="planet jupiter" id="jupiter"></div></div>
-    <div class="orbit" id="orbit-mars" style="width: 300px; height: 300px;"></div>
-    <div class="orbit" id="orbit-jupiter" style="width: 420px; height: 420px;"></div>
-
-    <!-- Planetas -->
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <script>
-    function orbitPlanet(planetId, radius, duration) {
-      anime({
-        targets: `#${planetId}`,
-        translateX: {
-          value: function (_, i) {
-            return radius;
-          }
-        },
-        rotate: '1turn',
-        duration: duration,
-        easing: 'linear',
-        loop: true,
-        direction: 'normal',
-        update: function(anim) {
-          let angle = anim.progress / 100 * 2 * Math.PI;
-          let planet = document.getElementById(planetId);
-          planet.style.transform = `translate(${radius * Math.cos(angle)}px, ${radius * Math.sin(angle)}px)`;
-        }
-      });
-    }
-
-    orbitPlanet('earth', 100, 8000);
-    orbitPlanet('mars', 150, 12000);
-    orbitPlanet('jupiter', 210, 20000);
-  </script>
+  <div class="small justified row">
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</div>
+<div class="small justified row">
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</div>
+<div class="small justified row">
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</div>
+<div class="small justified row">
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js">
+</script>
+<script>
+
+const $squares = document.querySelector('.square');
+
+function animateGrid() {
+  animate($squares, {
+    scale: [
+      { to: [0, 1.25] },
+      { to: 0 }
+    ],
+    boxShadow: [
+      { to: '0 0 1rem 0 currentColor' },
+      { to: '0 0 0rem 0 currentColor' }
+    ],
+    delay: stagger(100, {
+      grid: [11, 4],
+      from: utils.random(0, 11 * 4)
+    }),
+    onComplete: animateGrid
+  });
+}
+
+animateGrid();
+</script>
 </html>

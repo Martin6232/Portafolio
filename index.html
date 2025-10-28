@@ -11,29 +11,30 @@
     <!--Encabezado de pagina-->
     <header class="cabeza">
         <ul id="links">
-            <li class="links"><a href="#inicio" class="transportador rojo">Inicio</a></li><!--Te envia al inicio-->
-            <li class="links"><a href="#" class="transportador naranjo">Proyectos</a></li><!--Te envia al Proyectos-->
+            <li class="links"><a href="#" class="transportador rojo">Inicio</a></li><!--Te envia al inicio-->
+            <li class="links"><a href="#proyectos" class="transportador naranjo">Proyectos</a></li><!--Te envia al Proyectos-->
             <li class="links"><a href="#" class="transportador amarillo">Habilidades</a></li><!--Te envia al Habilidades-->
             <li class="links"><a href="#" class="transportador azul">Contacto</a></li><!--Te envia al Contacto-->
         </ul>
         <div class="linea_rgb"></div>
     </header>
     <!--Inicio con informacion sobre mi-->
-    <section id="inicio"></section>
 
     <section class="inicio">
         <div class="container-me">
             
             <img src="resources/img/IMG-20250822-WA0010.jpg" class="foto">
             <!-- Órbitas -->
-            <div class="orbit" id="orbit-earth" style="width: 250px; height: 250px;">
+            <div class="orbit" id="orbit" style="width: 250px; height: 250px;">
                 
                 <div class="planet earth" id="earth"></div>
+            </div>
+            <div class="orbit" id="orbit2" style="width: 300px; height: 300px;">
                 <div class="planet mars" id="mars"></div>
+            </div>
+            <div class="orbit" id="orbit3" style="width: 350px; height: 350px;">
                 <div class="planet jupiter" id="jupiter"></div>
             </div>
-            <div class="orbit" id="orbit-mars" style="width: 300px; height: 300px;"></div>
-            <div class="orbit" id="orbit-jupiter" style="width: 350px; height: 350px;"></div>
 
     <!-- Planetas -->
         </div>
@@ -43,12 +44,24 @@
     </section>
     <!--Proyectos-->
     <section id="proyectos">
-        <div class="youtube">
-            <img src="resources/img/descargar.jpg" class="logo">
+        <div class="containerL">
+            <h1>Mis Proyectos mas importantes</h1>
+            <h3>Hice varias copias de diseños durante mis estudios las que más resaltan son la de google play y youtube, hice muchas más que pueden interesar, además de estar trabajando en un proyecto llamado FIXO donde ofresco mantenimiento de computadoras</h3>
         </div>
-        <div class="google-play">
-            <img src="resources/img/16690303484790.jpg" class="logo">
+        <div class="containerR">
+            <div class="youtube">
+                <a href="http://">
+                    <img src="resources/img/descargar.jpg" class="logo">
+                </a>
+            </div>
+            <div class="google-play">
+                <a href="">
+                    <img src="resources/img/google-play-logo-nuevo.png" class="logo">
+                </a>
+                
+            </div>
         </div>
+        
     </section>
     <!--Habilidades-->
 </body>
@@ -56,29 +69,33 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
-function orbitPlanet(planetId, radius, duration) {
-    anime({
-        targets: `#${planetId}`,
-        translateX: {
-        value: function (_, i) {
-            return radius;
-        }
-        },
-        rotate: '1turn',
-        duration: duration,
-        easing: 'linear',
-        loop: true,
-        direction: 'normal',
-        update: function(anim) {
-            let angle = anim.progress / 100 * 2 * Math.PI;
-            let planet = document.getElementById(planetId);
-            planet.style.transform = `translate(${radius * Math.cos(angle)}px, ${radius * Math.sin(angle)}px)`;
-        }
-        });
-    }
 
-    orbitPlanet('earth', 130, 8000);
-    orbitPlanet('mars', 150, 12000);
-    orbitPlanet('jupiter', 170, 20000);
+const orbit = document.querySelector('#orbit');
+const orbit2 = document.querySelector('#orbit2');
+const orbit3 = document.querySelector('#orbit3');
+anime({
+    targets: orbit,
+    rotate: '360deg',
+    duration: 10000,
+    easing: 'linear',
+    loop: true
+});
+
+anime({
+    targets: orbit2,
+    rotate: '360deg',
+    duration: 20000,
+    easing: 'linear',
+    loop: true
+});
+
+anime({
+    targets: orbit3,
+    rotate: '360deg',
+    duration: 30000,
+    easing: 'linear',
+    loop: true
+});
+
 </script>
 </html>
