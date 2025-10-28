@@ -46,7 +46,7 @@
     <section id="proyectos">
         <div class="containerL">
             <h1>Mis Proyectos mas importantes</h1>
-            <h3>Hice varias copias de diseños durante mis estudios las que más resaltan son la de google play y youtube, hice muchas más que pueden interesar, además de estar trabajando en un proyecto llamado FIXO donde ofresco mantenimiento de computadoras</h3>
+            <h3>Hice varias copias de diseños durante mis estudios las que más resaltan son la de Google Play y YouTube, hice muchas más que pueden interesar, además de estar trabajando en un proyecto llamado FIXO donde ofresco mantenimiento de computadoras</h3>
         </div>
         <div class="containerR">
             <div class="youtube">
@@ -60,8 +60,19 @@
                 </a>
                 
             </div>
+            <div class="google-play">
+                <a href="">
+                    <img src="resources/img/google-play-logo-nuevo.png" class="logo">
+                </a>
+                
+            </div>
         </div>
-        
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
     </section>
     <!--Habilidades-->
 </body>
@@ -73,6 +84,7 @@
 const orbit = document.querySelector('#orbit');
 const orbit2 = document.querySelector('#orbit2');
 const orbit3 = document.querySelector('#orbit3');
+const snow = document.querySelector('.snow');
 anime({
     targets: orbit,
     rotate: '360deg',
@@ -95,6 +107,10 @@ anime({
     duration: 30000,
     easing: 'linear',
     loop: true
+});
+utils.set({
+    targets: '.snow',
+    x: () => utils.random(2, 18, 2) + 'rem',
 });
 
 </script>
