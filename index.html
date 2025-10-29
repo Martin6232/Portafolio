@@ -9,12 +9,12 @@
 </head>
 <body id="cuerpo">
     <!--Encabezado de pagina-->
-    <header class="cabeza">
+    <header class="cabeza ">
         <ul id="links">
             <li class="links"><a href="#" class="transportador rojo">Inicio</a></li><!--Te envia al inicio-->
             <li class="links"><a href="#proyectos" class="transportador naranjo">Proyectos</a></li><!--Te envia al Proyectos-->
             <li class="links"><a href="#habilidades" class="transportador amarillo">Habilidades</a></li><!--Te envia al Habilidades-->
-            <li class="links"><a href="#" class="transportador azul">Contacto</a></li><!--Te envia al Contacto-->
+            <li class="links"><a href="#contacto" class="transportador azul">Contacto</a></li><!--Te envia al Contacto-->
         </ul>
         <div class="linea_rgb"></div>
     </header>
@@ -48,6 +48,67 @@
             <h1>Mis Proyectos mas importantes</h1>
             <h3>Hice varias copias de diseños durante mis estudios las que más resaltan son la de Google Play y YouTube, hice muchas más que pueden interesar, además de estar trabajando en un proyecto llamado FIXO donde ofresco mantenimiento de computadoras</h3>
         </div>
+        <div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+        </div>
+        <div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+        </div>
+        <div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+            <div class="snow"></div>
+        </div>
+        
         <div class="containerR">
             <div class="youtube">
                 <a href="https://martin6232.github.io/">
@@ -67,12 +128,8 @@
                 
             </div>
         </div>
-        <div class="snow"></div>
-        <div class="snow"></div>
-        <div class="snow"></div>
-        <div class="snow"></div>
-        <div class="snow"></div>
-        <div class="snow"></div>
+        
+        
     </section>
     <!--Habilidades-->
     <section id="habilidades">
@@ -120,6 +177,14 @@
             </section>
         </div>
     </section>
+    <footer id="contacto">
+        <h3>Contacto</h3>
+        <divc class="info-contacto">
+            <p>Email: martin.rodriguez.vega03@gmail.com</p>
+            <p>Telefono: + 56 9 4585 9977</p>
+        </div>
+        <p>© 2025 Martin Rodriguez. Todos los derechos reservados.</p>
+    </footer>
 </body>
 <script src="static/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -129,8 +194,8 @@
 const orbit = document.querySelector('#orbit');
 const orbit2 = document.querySelector('#orbit2');
 const orbit3 = document.querySelector('#orbit3');
-const snow = document.querySelector('.snow');
 const header = document.querySelector('.cabeza');
+
 
 anime({
     targets: orbit,
@@ -155,28 +220,25 @@ anime({
     easing: 'linear',
     loop: true
 });
-anime({
-    targets: '.snow',
-    translateY: random(800, 1200),
-    duration: 10000,
-    easing: 'linear',
-    loop: true,
-});
+
 /*movimiento random*/
+
 function random(min, max) {
-    return Math.random(min, max) * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 anime({
     targets: '.snow',
-
-    translateY: random(800, 900),
-    translateX: random(1000, 1980),
-
-    easing: 'linear',
-    duration: 5000,
+    translateX: function() {
+        return random(-600, 600);
+    },
+    translateY: function() {
+        return random(-200, 200);
+    },
+    duration: 8000,
+    direction: 'alternate',
     loop: true,
-})
+});
 
 function scaleplus(element){
     anime({
