@@ -51,18 +51,18 @@
         <div class="containerR">
             <div class="youtube">
                 <a href="https://martin6232.github.io/">
-                    <img src="resources/img/descargar.jpg" class="logo">
+                    <img src="resources/img/descargar.jpg" class="logo" onmouseover="scaleplus(this)" onmouseout="scaleminos(this)">
                 </a>
             </div>
             <div class="google-play">
                 <a href="https://github.com/Martin6232/Google_Play">
-                    <img src="resources/img/google-play-logo-nuevo.png" class="logo">
+                    <img src="resources/img/google-play-logo-nuevo.png" class="logo" onmouseover="scaleplus(this)" onmouseout="scaleminos(this)">
                 </a>
                 
             </div>
             <div class="google-play">
                 <a href="https://github.com/Martin6232/desarollo-web-2025">
-                    <img src="resources/img/logo-github.webp" class="logo">
+                    <img src="resources/img/logo-github.webp" class="logo" onmouseover="scaleplus(this)" onmouseout="scaleminos(this)">
                 </a>
                 
             </div>
@@ -130,7 +130,8 @@ const orbit = document.querySelector('#orbit');
 const orbit2 = document.querySelector('#orbit2');
 const orbit3 = document.querySelector('#orbit3');
 const snow = document.querySelector('.snow');
-const logo = document.querySelector('.logo');
+const header = document.querySelector('.cabeza');
+
 anime({
     targets: orbit,
     rotate: '360deg',
@@ -157,18 +158,39 @@ anime({
 anime({
     targets: '.snow',
     translateY: random(800, 1200),
-    duration: 5000,
+    duration: 10000,
     easing: 'linear',
     loop: true,
 });
+/*movimiento random*/
+function random(min, max) {
+    return Math.random(min, max) * (max - min) + min;
+}
 
-function scaleplus(){
+anime({
+    targets: '.snow',
+
+    translateY: random(800, 900),
+    translateX: random(1000, 1980),
+
+    easing: 'linear',
+    duration: 5000,
+    loop: true,
+})
+
+function scaleplus(element){
     anime({
-        targets: '.logo',
+        targets: element,
         scale: 1.1,
-        rotate: 360,
         duration: 300,
-        easing: 'easeInOutQuad',
+    });
+}
+
+function scaleminos(element){
+    anime({
+        targets: element,
+        scale: 1,
+        duration: 300,
     });
 }
 
